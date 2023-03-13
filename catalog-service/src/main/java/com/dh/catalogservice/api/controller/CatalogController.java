@@ -16,18 +16,17 @@ import java.util.List;
 @RequestMapping("/catalog")
 public class CatalogController {
 
-    @Autowired
-    private IMovieServiceClient iMovieServiceClient;
+    CatalogService catalogService;
 
     public CatalogController(CatalogService service) {
-        this.iMovieServiceClient = iMovieServiceClient;
+        this.catalogService = service;
     }
 
 
     @GetMapping("/{genre}")
     ResponseEntity<List<Movie>> getGenre(@PathVariable String genre) {
 
-        return iMovieServiceClient.getMovieByGenre(genre);
+        return ResponseEntity.ok().body(catalogService.getMovieByGenre(genre));
     }
 
 }

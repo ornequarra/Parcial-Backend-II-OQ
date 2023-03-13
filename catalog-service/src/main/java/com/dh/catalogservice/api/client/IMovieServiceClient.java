@@ -11,5 +11,5 @@ import java.util.List;
 @FeignClient(name = "movie-service")
 public interface IMovieServiceClient {
     @GetMapping("/{genre}")
-    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre);
+    List<Movie> getMovieByGenre(@PathVariable String genre);
 }
